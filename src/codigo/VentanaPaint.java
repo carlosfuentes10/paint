@@ -8,6 +8,7 @@ package codigo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -17,6 +18,7 @@ import java.awt.image.BufferedImage;
 public class VentanaPaint extends javax.swing.JFrame {
 
     BufferedImage buffer = null; 
+    Ellipse2D.Double auxiliar;
     
     /**
      * Creates new form VentanaPaint
@@ -32,13 +34,20 @@ public class VentanaPaint extends javax.swing.JFrame {
         //creo una imagen modificable
         Graphics2D g2 = buffer.createGraphics();
         //incializa el buffer para que sea un rectángulo rojo que ocupe todo el jpanel
-        g2.setColor(Color.red);
+        g2.setColor(Color.white);
         g2.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
     }
     
     @Override
     public void paint(Graphics g){
         super.paint(g);
+        
+        //pinto el buffer sobre el jFrame
+        //primero creo una variable que apunta al sitio que quiero pintar
+        Graphics2D g2 = (Graphics2D) jPanel1.getGraphics();
+        g2.drawImage(buffer, 0, 0, null);
+        
+        
     }
     
     
@@ -61,6 +70,16 @@ public class VentanaPaint extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,6 +109,30 @@ public class VentanaPaint extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+
+        //primero apuntamos al buffer para dibujar sobre el
+        Graphics2D g2 = (Graphics2D) buffer.getGraphics();
+        //borro lo que hubiera pintado en el lienzo
+        g2.setColor(Color.white);
+        g2.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
+        int radio = Math.abs( (int) auxiliar.x - evt.getX());
+        auxiliar.width = radio;
+        auxiliar.height = radio; 
+        g2.setColor(Color.BLACK);
+        g2.fill(auxiliar);
+        
+
+        repaint(0,0,1,1);
+        
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        //inicializo la ellipse que usaré para dibujar en el buffer
+        auxiliar = new Ellipse2D.Double(evt.getX(), evt.getY(), 1, 1);
+        
+    }//GEN-LAST:event_jPanel1MousePressed
 
     /**
      * @param args the command line arguments
