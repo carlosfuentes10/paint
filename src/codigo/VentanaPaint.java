@@ -26,6 +26,8 @@ public class VentanaPaint extends javax.swing.JFrame {
                                 // si vale 1 pinto cuadrados
                                 // si vale 2 pinto líneas
     
+    Graphics2D bufferGraphics, buffer2Graphics, jPanelGraphics = null;
+    
     /**
      * Creates new form VentanaPaint
      */
@@ -40,18 +42,18 @@ public class VentanaPaint extends javax.swing.JFrame {
         //creo una imagen del mismo ancho y alto que el lienzo
         buffer = (BufferedImage) jPanel1.createImage(jPanel1.getWidth(), jPanel1.getHeight());
         //creo una imagen modificable
-        Graphics2D g2 = buffer.createGraphics();
+        bufferGraphics = buffer.createGraphics();
         //incializa el buffer para que sea un rectángulo rojo que ocupe todo el jpanel
-        g2.setColor(Color.white);
-        g2.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
+        bufferGraphics.setColor(Color.white);
+        bufferGraphics.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
         
         //inicializo el 2º Buffer
          buffer2 = (BufferedImage) jPanel1.createImage(jPanel1.getWidth(), jPanel1.getHeight());
         //creo una imagen modificable
-        g2 = buffer2.createGraphics();
+        buffer2Graphics = buffer2.createGraphics();
         //incializa el buffer para que sea un rectángulo rojo que ocupe todo el jpanel
-        g2.setColor(Color.white);
-        g2.fillRect(0, 0, buffer2.getWidth(), buffer2.getHeight());       
+        buffer2Graphics.setColor(Color.white);
+        buffer2Graphics.fillRect(0, 0, buffer2.getWidth(), buffer2.getHeight());       
     }
     
     @Override
@@ -234,15 +236,11 @@ public class VentanaPaint extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-
-        //primero apuntamos al buffer para dibujar sobre el
-        Graphics2D g2 = (Graphics2D) buffer.getGraphics();
-        //repinto el fondo
-        g2.drawImage(buffer2, 0, 0, null);
+        bufferGraphics.drawImage(buffer2, 0, 0, null);
         //dibujo la forma correspondiente 
         switch (formaSeleccionada){
-            case 0: circulo.dibujate(g2, evt.getX()); break;
-            case 1: cuadrado.dibujate(g2, evt.getX()); break; 
+            case 0: circulo.dibujate(bufferGraphics, evt.getX()); break;
+            case 1: cuadrado.dibujate(bufferGraphics, evt.getX()); break; 
         }        
         repaint(0,0,1,1);      
     }//GEN-LAST:event_jPanel1MouseDragged
@@ -258,12 +256,10 @@ public class VentanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-        //apunto al Buffer2
-        Graphics2D g2 = (Graphics2D) buffer2.getGraphics();
-        //dibujo la forma correspondiente 
+         //dibujo la forma correspondiente 
         switch (formaSeleccionada){
-            case 0: circulo.dibujate(g2, evt.getX()); break;
-            case 1: cuadrado.dibujate(g2, evt.getX()); break; 
+            case 0: circulo.dibujate(buffer2Graphics, evt.getX()); break;
+            case 1: cuadrado.dibujate(buffer2Graphics, evt.getX()); break; 
         }    
     }//GEN-LAST:event_jPanel1MouseReleased
 
