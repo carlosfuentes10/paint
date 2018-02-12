@@ -179,8 +179,18 @@ public class VentanaPaint extends javax.swing.JFrame {
         });
 
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo.png"))); // NOI18N
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jToggleButton1MousePressed(evt);
+            }
+        });
 
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cuadrado.png"))); // NOI18N
+        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jToggleButton2MousePressed(evt);
+            }
+        });
 
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linea.png"))); // NOI18N
 
@@ -275,6 +285,20 @@ public class VentanaPaint extends javax.swing.JFrame {
         jLabel1.setBackground(colorSeleccionado);
         
     }//GEN-LAST:event_jButton2MousePressed
+
+    private void jToggleButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MousePressed
+        //elige circulos
+        formaSeleccionada = 0;
+        jToggleButton2.setSelected(false);
+        jToggleButton3.setSelected(false);
+    }//GEN-LAST:event_jToggleButton1MousePressed
+
+    private void jToggleButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MousePressed
+        //elige cuadrados
+        formaSeleccionada = 1;
+        jToggleButton1.setSelected(false);
+        jToggleButton3.setSelected(false);
+    }//GEN-LAST:event_jToggleButton2MousePressed
 
     /**
      * @param args the command line arguments
