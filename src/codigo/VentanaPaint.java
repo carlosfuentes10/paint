@@ -10,7 +10,6 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 
 /**
@@ -263,15 +262,15 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         bufferGraphics.drawImage(buffer2, 0, 0, null);
-        miForma.dibujate(bufferGraphics, evt.getY());       
+        miForma.dibujate(bufferGraphics, evt.getY(), evt.getX());       
         repaint(0,0,1,1);      
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         //inicializo la forma que usaré para dibujar en el buffer
         switch (formaSeleccionada){
-            //case 0: circulo = new Circulo(evt.getX(), evt.getY(), 1,colorSeleccionado, jCheckBox1.isSelected()); 
-            //        break;
+            case 100: miForma = new Circulo(evt.getX(), evt.getY(),colorSeleccionado, jCheckBox1.isSelected()); 
+                    break;
             //case 1: cuadrado = new Cuadrado(evt.getX(), evt.getY(), 1,colorSeleccionado, jCheckBox1.isSelected()); 
             //        break;
             case 3: miForma = new Triangulo(evt.getX(), evt.getY(), colorSeleccionado, jCheckBox1.isSelected()); 
@@ -283,7 +282,7 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
          //dibujo la forma correspondiente 
-          miForma.dibujate(buffer2Graphics, evt.getY());  
+          miForma.dibujate(buffer2Graphics, evt.getY(), evt.getX());  
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -307,13 +306,13 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     private void jToggleButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MousePressed
         //elige circulos
-        formaSeleccionada = 0;
+        formaSeleccionada = 100;
         deSelecciona();
     }//GEN-LAST:event_jToggleButton1MousePressed
 
     private void jToggleButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MousePressed
         //elige cuadrados
-        formaSeleccionada = 1;        
+        formaSeleccionada = 4;        
         deSelecciona();
     }//GEN-LAST:event_jToggleButton2MousePressed
 
