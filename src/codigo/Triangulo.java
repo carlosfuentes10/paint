@@ -42,7 +42,7 @@ public class Triangulo extends Polygon {
         this.ypoints[1] = _posY + altura;
         this.ypoints[2] = _posY + altura;
 
-        int mediaBase = (int) (altura / Math.tan(Math.toRadians(30)));
+        int mediaBase = (int) (altura / Math.sin(Math.toRadians(60)));
 
         this.xpoints[1] = this.xpoints[0] + mediaBase;
         this.xpoints[2] = this.xpoints[0] - mediaBase;        
