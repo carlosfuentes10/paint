@@ -32,7 +32,7 @@ public class Forma extends Polygon{
         
     public void dibujate(Graphics2D g2, int _posY, int _posX) {
         //redibujas el pentágono
-        calculaVertices( y - _posY, (x - _posX) / 10);
+        calculaVertices( y - _posY, x - _posX );
         g2.setColor(color);
         if (relleno) {
             g2.fill(this);
@@ -44,8 +44,8 @@ public class Forma extends Polygon{
     //recalcula la posición de los vértices en un polígono regular
     private void calculaVertices (int _radio, double _giro){
         for(int i=0; i<npoints; i++){
-            this.xpoints[i] = (int) (x + _radio*Math.cos((2*Math.PI * i + _giro)/npoints));
-            this.ypoints[i] = (int) (y + _radio*Math.sin((2*Math.PI * i + _giro)/npoints));
+            this.xpoints[i] = (int) (x + _radio*Math.cos((2*Math.PI * i + _giro/40)/npoints));
+            this.ypoints[i] = (int) (y + _radio*Math.sin((2*Math.PI * i + _giro/40)/npoints));
         }
     }
 }

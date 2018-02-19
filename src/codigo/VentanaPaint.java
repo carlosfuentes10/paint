@@ -271,10 +271,10 @@ public class VentanaPaint extends javax.swing.JFrame {
         switch (formaSeleccionada){
             case 100: miForma = new Circulo(evt.getX(), evt.getY(),colorSeleccionado, jCheckBox1.isSelected()); 
                     break;
-            //case 1: cuadrado = new Cuadrado(evt.getX(), evt.getY(), 1,colorSeleccionado, jCheckBox1.isSelected()); 
-            //        break;
             case 3: miForma = new Triangulo(evt.getX(), evt.getY(), colorSeleccionado, jCheckBox1.isSelected()); 
-                    break;     
+                    break;
+            case 4: miForma = new Cuadrado(evt.getX(), evt.getY(), colorSeleccionado, jCheckBox1.isSelected()); 
+                    break;                    
             case 5: miForma = new Pentagono(evt.getX(), evt.getY(), colorSeleccionado, jCheckBox1.isSelected()); 
                     break;  
         }      
