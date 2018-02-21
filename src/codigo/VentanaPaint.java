@@ -109,6 +109,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jButton1.setText("Cancelar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,6 +265,14 @@ public class VentanaPaint extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setText("Cargar");
+        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem2MousePressed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -418,6 +427,26 @@ public class VentanaPaint extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenu1StateChanged
 
+    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
+        int seleccion = jFileChooser1.showOpenDialog(this);
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION){
+            //si llego aquí es que el usuario ha pulsado en "guardar" cuando ha salido 
+            //el menú del jFileChooser
+            File fichero = jFileChooser1.getSelectedFile();
+            String nombre = fichero.getName();
+            String extension = nombre.substring(nombre.lastIndexOf('.')+1);
+            if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")){
+                try{
+                    buffer = ImageIO.read(fichero);
+                    repaint();
+                }
+                catch(IOException e){
+                }
+            }
+        }
+    }//GEN-LAST:event_jMenuItem2MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -465,6 +494,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
