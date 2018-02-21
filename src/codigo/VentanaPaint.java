@@ -436,9 +436,12 @@ public class VentanaPaint extends javax.swing.JFrame {
             File fichero = jFileChooser1.getSelectedFile();
             String nombre = fichero.getName();
             String extension = nombre.substring(nombre.lastIndexOf('.')+1);
+            BufferedImage imagen = null;
             if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")){
                 try{
-                    buffer = ImageIO.read(fichero);
+                    imagen = ImageIO.read(fichero);
+                    bufferGraphics.drawImage(imagen, 0, 0, null);
+                    buffer2Graphics.drawImage(imagen, 0, 0, null);
                     repaint();
                 }
                 catch(IOException e){
