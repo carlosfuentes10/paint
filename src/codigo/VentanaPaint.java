@@ -368,8 +368,7 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         bufferGraphics.drawImage(buffer2, 0, 0, null);
-        trazo1 = new BasicStroke( jSlider1.getValue(),BasicStroke.CAP_BUTT,BasicStroke.JOIN_MITER,10.0f,  new float[]{10.0f},0.0f);
-        miForma.dibujate(bufferGraphics, evt.getY(), evt.getX(),trazo1);       
+        miForma.dibujate(bufferGraphics, evt.getY(), evt.getX(),new Trazo(jSlider1.getValue(), true));       
         repaint(0,0,1,1);      
     }//GEN-LAST:event_jPanel1MouseDragged
 
@@ -391,8 +390,7 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
          //dibujo la forma correspondiente 
-        trazo1 = new BasicStroke( jSlider1.getValue(),BasicStroke.CAP_BUTT,BasicStroke.JOIN_MITER,10.0f,  new float[]{10.0f},0.0f);
-        miForma.dibujate(buffer2Graphics, evt.getY(), evt.getX(),trazo1);  
+        miForma.dibujate(buffer2Graphics, evt.getY(), evt.getX(),new Trazo(jSlider1.getValue(), true));  
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
