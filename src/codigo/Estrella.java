@@ -14,7 +14,7 @@ public class Estrella extends Forma {
 
     public Estrella(int _posX, int _posY, Color _color, boolean _relleno) {
         //inicializa el constructor del triángulo correctamente para que guarde 3 lados
-        super(_posX, _posY, 1024, _color, _relleno);
+        super(_posX, _posY, 256, _color, _relleno);
     }
 
     
