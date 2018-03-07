@@ -119,6 +119,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         jToggleButton6 = new javax.swing.JToggleButton();
         jSlider1 = new javax.swing.JSlider();
         jSpinner1 = new javax.swing.JSpinner();
+        jToggleButton7 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -282,6 +283,13 @@ public class VentanaPaint extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hexagono.png"))); // NOI18N
+        jToggleButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jToggleButton7MousePressed(evt);
+            }
+        });
+
         jMenu1.setText("File");
         jMenu1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -331,7 +339,8 @@ public class VentanaPaint extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox1)
                             .addComponent(jLabel1)
-                            .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,8 +369,10 @@ public class VentanaPaint extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(710, 710, 710))
+                .addGap(609, 609, 609))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,7 +402,9 @@ public class VentanaPaint extends javax.swing.JFrame {
             case 24: miForma = new Estrella(evt.getX(), evt.getY(), colorSeleccionado, jCheckBox1.isSelected()); 
                     break;
             case 2: miForma = new Linea(evt.getX(), evt.getY(), colorSeleccionado, jCheckBox1.isSelected()); 
-                    break;   
+                    break;
+            case 6: miForma = new Hexagono(evt.getX(), evt.getY(), colorSeleccionado, jCheckBox1.isSelected()); 
+                    break;
         }      
     }//GEN-LAST:event_jPanel1MousePressed
 
@@ -512,6 +525,11 @@ public class VentanaPaint extends javax.swing.JFrame {
         deSelecciona();
     }//GEN-LAST:event_jToggleButton3MousePressed
 
+    private void jToggleButton7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton7MousePressed
+        formaSeleccionada = 6;
+        deSelecciona();
+    }//GEN-LAST:event_jToggleButton7MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -569,5 +587,6 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
     // End of variables declaration//GEN-END:variables
 }
