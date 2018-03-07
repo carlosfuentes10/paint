@@ -143,12 +143,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jToggleButton1" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jToggleButton2" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jToggleButton3" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jToggleButton4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jToggleButton5" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jToggleButton4" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
@@ -174,28 +174,28 @@
           <Group type="102" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jToggleButton1" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToggleButton2" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToggleButton3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToggleButton4" min="-2" pref="38" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToggleButton5" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSlider1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jToggleButton6" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="650" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="710" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -282,11 +282,14 @@
           <Image iconType="3" name="/imagenes/linea.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButton3MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="jToggleButton4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/circulo.png"/>
+          <Image iconType="3" name="/imagenes/triangulo.png"/>
         </Property>
       </Properties>
       <Events>
@@ -296,7 +299,7 @@
     <Component class="javax.swing.JToggleButton" name="jToggleButton5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/circulo.png"/>
+          <Image iconType="3" name="/imagenes/pentagono.png"/>
         </Property>
       </Properties>
       <Events>
@@ -306,7 +309,7 @@
     <Component class="javax.swing.JToggleButton" name="jToggleButton6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/circulo.png"/>
+          <Image iconType="3" name="/imagenes/estrella.png"/>
         </Property>
       </Properties>
       <Events>
