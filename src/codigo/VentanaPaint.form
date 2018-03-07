@@ -144,11 +144,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jToggleButton1" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jToggleButton2" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jToggleButton3" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jToggleButton5" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jToggleButton4" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jToggleButton1" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jToggleButton2" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
@@ -352,7 +352,7 @@
     <Component class="javax.swing.JToggleButton" name="jToggleButton8">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/hexagono.png"/>
+          <Image iconType="3" name="/imagenes/pincel.png"/>
         </Property>
       </Properties>
       <Events>
