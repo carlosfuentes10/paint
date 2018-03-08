@@ -49,8 +49,11 @@ public class VentanaPaint extends javax.swing.JFrame {
     private int x2;
     private int y1;
     private int y2;
+    private double xOrigen;
+    private double yOrigen;
     private int selectCursor = -1;
     private Cursor cursorLapiz;
+    private boolean flagPaint=false;
     /**
      * Creates new form VentanaPaint
      */
@@ -129,6 +132,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jToggleButton7 = new javax.swing.JToggleButton();
         jToggleButton8 = new javax.swing.JToggleButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -241,7 +245,7 @@ public class VentanaPaint extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo.png"))); // NOI18N
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/circle.png"))); // NOI18N
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jToggleButton1MousePressed(evt);
@@ -312,6 +316,13 @@ public class VentanaPaint extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/goma1.png"))); // NOI18N
+        jToggleButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jToggleButton9MousePressed(evt);
+            }
+        });
+
         jMenu1.setText("File");
         jMenu1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -363,7 +374,8 @@ public class VentanaPaint extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,8 +408,10 @@ public class VentanaPaint extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(622, 622, 622))
+                .addGap(578, 578, 578))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,7 +425,8 @@ public class VentanaPaint extends javax.swing.JFrame {
 //        bufferGraphics.drawImage(buffer2, 0, 0, null);
 //        miForma.dibujate(bufferGraphics, evt.getY(), evt.getX(),new Trazo(jSlider1.getValue(), true));       
 //        repaint(0,0,1,1);
-          switch (formaSeleccionada) {
+           switch (formaSeleccionada) {
+            //Con este caso selecciono el lapiz y me dibuja una linea a mano alzada
             case 10:
                 x2 = evt.getX();
                 y2 = evt.getY();
@@ -421,12 +436,25 @@ public class VentanaPaint extends javax.swing.JFrame {
                     
                     x1 = x2;
                     y1 = y2;
-                    //System.out.println(x1+" "+x2 + " " + y1 + "" + y2);
+                }
+                break;
+                //Con este caso selecciono el borrador, que lo que hace es 
+                //pintar en blanco,  que es como si lo borrara ya que quieres
+                //quitar la/s figura/s que tienes pinatada/s.
+                case 11:
+                x2 = evt.getX();
+                y2 = evt.getY();
+                if (x1 != x2 || y1 != y2) {
+                    bufferGraphics.setColor(Color.WHITE);
+                    bufferGraphics.drawLine(x1, y1, x2, y2);
+                    
+                    x1 = x2;
+                    y1 = y2;
                 }
                 break;
             default:
                 bufferGraphics.drawImage(buffer2, 0, 0, null);
-                miForma.dibujate(bufferGraphics, evt.getY(), evt.getX(), new Trazo(jSlider1.getValue(), true));
+                miForma.dibujate(bufferGraphics, evt.getY(), evt.getX(), new Trazo(jSlider1.getValue()));
                 
                 break;
         }
@@ -454,6 +482,10 @@ public class VentanaPaint extends javax.swing.JFrame {
                 x1 = evt.getX();
                 y1 = evt.getY();
                 break;
+            case 11:
+                x1 = evt.getX();
+                y1 = evt.getY();
+                break;
         }      
     }//GEN-LAST:event_jPanel1MousePressed
 
@@ -464,8 +496,11 @@ public class VentanaPaint extends javax.swing.JFrame {
             case 10:
                 buffer2Graphics.drawImage(buffer, 0, 0, null);
                 break;
+                case 11:
+                buffer2Graphics.drawImage(buffer, 0, 0, null);
+                break;
             default:
-                miForma.dibujate(buffer2Graphics, evt.getY(), evt.getX(), new Trazo(jSlider1.getValue(), true));
+                miForma.dibujate(buffer2Graphics, evt.getY(), evt.getX(), new Trazo(jSlider1.getValue()));
                 break;
         }
     }//GEN-LAST:event_jPanel1MouseReleased
@@ -603,6 +638,11 @@ public class VentanaPaint extends javax.swing.JFrame {
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
             setCursor(Cursor.DEFAULT_CURSOR);    }//GEN-LAST:event_jPanel1MouseExited
 
+    private void jToggleButton9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton9MousePressed
+        formaSeleccionada = 11;
+        deSelecciona();
+    }//GEN-LAST:event_jToggleButton9MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -662,5 +702,6 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
     // End of variables declaration//GEN-END:variables
 }
